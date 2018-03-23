@@ -18,6 +18,10 @@
     "start": "ember serve",
     "test": "ember try:each"
   },
+  "peerDependencies": {
+    "react": "^16",
+    "react-dom": "^16"
+  },
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -46,7 +50,9 @@
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^5.2.1",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.2.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
