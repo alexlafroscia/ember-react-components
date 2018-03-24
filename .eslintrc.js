@@ -1,20 +1,36 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   plugins: [
-    'ember'
+    'babel',
+    'ember',
+    'react',
+    'prettier'
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended'
+    'plugin:ember/recommended',
+    'prettier'
   ],
   env: {
     browser: true
   },
   rules: {
+    'prettier/prettier': ['error', {
+      singleQuote: true
+    }],
+
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+
+    'ember/no-attrs-in-components': 'off'
   },
   overrides: [
     // node files

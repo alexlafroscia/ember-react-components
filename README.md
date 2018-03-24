@@ -1,50 +1,74 @@
 ember-cli-react
 ==============================================================================
+> Consume React components in Ember ???
 
-[Short description of the addon.]
+This addon is a proof-of-concept for an approach to rendering React components in Ember. It is almost entirely inspired by [a blog post][blog-post] by [Sivakumar Kailasam][sivakumar], from which the general idea was mostly borrowed.
 
 Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-cli-react
+yarn add -D alexlafroscia/ember-cli-react react react-dom
 ```
+
+Note: `react` and `react-dom` are considered peer dependencies of this addon. You should install them in addition to the addon itself.
 
 
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+This addon provides an ES6 class decorator that allows a React element to be rendered in Ember.
+
+As an example, you can create a component like this:
 
 
-Contributing
+```javascript
+// app/components/my-react-component.js
+import React from 'react';
+import WithEmberSupport from 'ember-cli-react';
+
+@WithEmberSupport
+export default class extends React.Component {
+  render() {
+    const { name } = this.props;
+
+    return (
+      <p>Hello, {name}</p>
+    );
+  }
+}
+```
+
+And render it like this:
+
+```handlebars
+{{my-react-component name='Alex'}}
+```
+
+That would create a component that renders `Hello, Alex`.
+
+Got'chas
 ------------------------------------------------------------------------------
 
-### Installation
+* Any time a property on `my-react-component` changes, it will blow away the React component entirely and re-render it. You will lose any temporal state.
 
-* `git clone <repository-url>`
-* `cd ember-cli-react`
-* `npm install`
+What all is this addon doing?
+------------------------------------------------------------------------------
 
-### Linting
+* Provides imports for `react` and `react-dom`
+* Hooks up a bunch of necessary `babel` transforms
+* Includes the decorator for creating a React-Ember-component Frankenstein-ian monster class that does the "heavy lifting" to bridge the two frameworks
 
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+Is this production ready?
+------------------------------------------------------------------------------
 
-### Running tests
+O god, please do not use this
 
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `npm test` – Runs `ember try:each` to test your addon against multiple Ember versions
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
 License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
+
+[blog-post]: https://medium.com/@sivakumar_k/using-react-components-in-your-ember-app-8f7805d409b0
+[sivakumar]: https://github.com/sivakumar-kailasam
