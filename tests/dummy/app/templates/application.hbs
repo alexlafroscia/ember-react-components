@@ -1,13 +1,1 @@
-<h2 id="title">Hello from Ember</h2>
-
-<button {{action (mut showReactComponent) true}}>
-  Show react component
-</button>
-
-<button {{action (mut showReactComponent) false}}>
-  Hide react component
-</button>
-
-{{#if showReactComponent}}
-  {{from-mixin}}
-{{/if}}
+{{outlet}}
