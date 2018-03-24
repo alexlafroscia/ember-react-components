@@ -1,5 +1,8 @@
 ember-cli-react
 ==============================================================================
+
+[![Build Status](https://travis-ci.org/alexlafroscia/ember-cli-react.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-cli-react)
+
 > Consume React components in Ember ???
 
 This addon is a proof-of-concept for an approach to rendering React components in Ember. It is almost entirely inspired by [a blog post][blog-post] by [Sivakumar Kailasam][sivakumar], from which the general idea was mostly borrowed.
