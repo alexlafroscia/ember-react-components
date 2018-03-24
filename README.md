@@ -7,7 +7,7 @@ This addon is a proof-of-concept for an approach to rendering React components i
 Installation
 ------------------------------------------------------------------------------
 
-```
+```bash
 yarn add -D alexlafroscia/ember-cli-react react react-dom
 ```
 
@@ -20,7 +20,6 @@ Usage
 This addon provides an ES6 class decorator that allows a React element to be rendered in Ember.
 
 As an example, you can create a component like this:
-
 
 ```javascript
 // app/components/my-react-component.js
