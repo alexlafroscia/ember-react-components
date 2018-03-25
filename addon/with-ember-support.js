@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 export function WithEmberSupport(Klass) {
   return class extends Component {
     constructor() {
-      super();
+      super(...arguments);
 
       for (const key in Klass.prototype) {
         this[key] = Klass.prototype[key];
