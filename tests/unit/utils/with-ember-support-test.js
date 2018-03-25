@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
+import td from 'testdouble';
 
 module('Unit | Utility | with-ember-support', function(hooks) {
   setupRenderingTest(hooks);
@@ -37,6 +38,23 @@ module('Unit | Utility | with-ember-support', function(hooks) {
       this.element.textContent.trim(),
       'foo equals some new value',
       'Updates when properties change'
+    );
+  });
+
+  test('an action passed into the component can be called', async function(assert) {
+    const action = td.function();
+    this.set('action', action);
+
+    await render(hbs`
+      {{invoke-action action=action}}
+    `);
+
+    await click('button');
+
+    assert.equal(
+      td.explain(action).callCount,
+      1,
+      'Invoked the passed in action'
     );
   });
 });
