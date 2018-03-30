@@ -1,4 +1,4 @@
-# Children
+# Yield to Children
 
 Basic support for block-style rendering is supported. The yielded content will be rendered to the `children` of the component.
 

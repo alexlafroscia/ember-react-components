@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('installation');
 
     this.route('features', function() {
+      this.route('generator');
       this.route('children');
     });
 
