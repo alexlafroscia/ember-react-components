@@ -12,6 +12,7 @@ Router.map(function() {
 
     this.route('features', function() {
       this.route('generator');
+      this.route('services');
       this.route('children');
     });
 
