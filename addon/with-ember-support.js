@@ -3,8 +3,10 @@ import { get } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import YieldWrapper from './yield-wrapper';
 
 /**
+ * @hide
  * @function WithEmberSupport
  * @param {React.Component} klass The React class to "transform"
  * @return {Ember.Component} the resulting class
@@ -30,8 +32,21 @@ export function WithEmberSupport(Klass) {
     }
 
     _mountElement() {
+      const props = this._getPropsForReact();
+      let { children } = props;
+
+      if (!children) {
+        const childNodes = get(this, 'element.childNodes');
+        children = [
+          React.createElement(YieldWrapper, {
+            key: get(this, 'elementId'),
+            nodes: [...childNodes]
+          })
+        ];
+      }
+
       this._reactElement = ReactDOM.render(
-        <Klass {...this._getPropsForReact()} />,
+        <Klass {...props}>{children}</Klass>,
         this.element
       );
     }
