@@ -81,4 +81,30 @@ module('Unit | Utility | with-ember-support', function(hooks) {
       .dom('[data-test="prop"]')
       .hasText('bar', 'The prop has actually updated');
   });
+
+  module('supporting yields and children', function() {
+    test('it can yield the block to the React children', async function(assert) {
+      await render(hbs`
+        {{#yield-to-children}}
+          <h1>Child content</h1>
+        {{/yield-to-children}}
+      `);
+
+      assert.dom('#wrapper').exists();
+      assert.dom('h1').exists();
+    });
+
+    test('the yield can have multiple children', async function(assert) {
+      await render(hbs`
+        {{#yield-to-children}}
+          <p data-test="foo">Foo</p>
+          <p data-test="bar">Bar</p>
+        {{/yield-to-children}}
+      `);
+
+      assert.dom('#wrapper').exists();
+      assert.dom('[data-test="foo"]').exists();
+      assert.dom('[data-test="bar"]').exists();
+    });
+  });
 });

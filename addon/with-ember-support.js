@@ -3,6 +3,7 @@ import { get } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import YieldWrapper from './yield-wrapper';
 
 /**
  * @function WithEmberSupport
@@ -30,8 +31,21 @@ export function WithEmberSupport(Klass) {
     }
 
     _mountElement() {
+      const props = this._getPropsForReact();
+      let { children } = props;
+
+      if (!children) {
+        const childNodes = get(this, 'element.childNodes');
+        children = [
+          React.createElement(YieldWrapper, {
+            key: get(this, 'elementId'),
+            nodes: [...childNodes]
+          })
+        ];
+      }
+
       this._reactElement = ReactDOM.render(
-        <Klass {...this._getPropsForReact()} />,
+        React.createElement(Klass, props, children),
         this.element
       );
     }
