@@ -8,12 +8,6 @@ function ensureMapHasOwner(owner) {
   }
 }
 
-function determineOwnerSymbol(owner) {
-  const captureOwner = Object.create(null);
-  setOwner(captureOwner, owner);
-  return Object.keys(captureOwner)[0];
-}
-
 /**
  * Memoizes the "KlassWithOwner" classes, so that only one is generated
  * for any given pair of Klass and owner. Otherwise, we generate a new
@@ -34,11 +28,11 @@ export default function grantOwnerAccess(Klass, owner) {
     return klassMap.get(owner).get(Klass);
   }
 
-  const ownerKey = determineOwnerSymbol(owner);
-
   const KlassWithOwner = class extends Klass {
-    get [ownerKey]() {
-      return owner;
+    constructor() {
+      super(...arguments);
+
+      setOwner(this, owner);
     }
   };
 

@@ -17,14 +17,6 @@ import grantOwnerAccess from './-private/grant-owner-access';
  */
 export default function WithEmberSupport(Klass) {
   return class extends Component {
-    constructor() {
-      super(...arguments);
-
-      for (const key in Klass.prototype) {
-        this[key] = Klass.prototype[key];
-      }
-    }
-
     _getPropsForReact() {
       return Object.keys(this.attrs).reduce((acc, key) => {
         const value = get(this, key);

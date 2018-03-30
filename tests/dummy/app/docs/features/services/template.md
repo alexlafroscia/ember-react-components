@@ -3,7 +3,7 @@
 Services can be used through the [`@ember-decorators`][ember-decorators] addon. Start off by installing it
 
 ```bash
-ember install ember-decorators
+ember install ember-decorators@next
 ```
 
 With that set up, you can inject references to a service the same way you can with an Ember component

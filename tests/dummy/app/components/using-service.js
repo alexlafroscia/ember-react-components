@@ -2,7 +2,7 @@
 import React from 'react';
 import WithEmberSupport from 'ember-cli-react';
 import { get } from '@ember/object';
-import { service } from 'ember-decorators/service';
+import { service } from '@ember-decorators/service';
 
 @WithEmberSupport
 export default class UsingService extends React.Component {
