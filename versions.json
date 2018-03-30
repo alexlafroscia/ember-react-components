@@ -10,5 +10,17 @@
     "tag": "v1.0.0-beta.1",
     "path": "v1.0.0-beta.1",
     "name": "v1.0.0-beta.1"
+  },
+  "v1.0.0": {
+    "sha": "58227a327a3e5e086518834d3fd2203d3775d9e9",
+    "tag": "v1.0.0",
+    "path": "v1.0.0",
+    "name": "v1.0.0"
+  },
+  "latest": {
+    "sha": "58227a327a3e5e086518834d3fd2203d3775d9e9",
+    "tag": "v1.0.0",
+    "path": "latest",
+    "name": "latest"
   }
 }
