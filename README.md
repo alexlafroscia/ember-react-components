@@ -3,9 +3,9 @@ ember-cli-react
 
 [![Build Status](https://travis-ci.org/alexlafroscia/ember-cli-react.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-cli-react)
 
-> Consume React components in Ember ???
+> Consume React components in Ember
 
-This addon is a proof-of-concept for an approach to rendering React components in Ember. It is almost entirely inspired by [a blog post][blog-post] by [Sivakumar Kailasam][sivakumar], from which the general idea was mostly borrowed.
+This addon is a proof-of-concept for an approach to rendering React components in Ember. It is almost entirely inspired by [a blog post][blog-post] by [Sivakumar Kailasam][sivakumar], from which the general idea was borrowed.
 
 Installation
 ------------------------------------------------------------------------------
@@ -49,11 +49,6 @@ And render it like this:
 
 That would create a component that renders `Hello, Alex`.
 
-Got'chas
-------------------------------------------------------------------------------
-
-* Any time a property on `my-react-component` changes, it will blow away the React component entirely and re-render it. You will lose any temporal state.
-
 What all is this addon doing?
 ------------------------------------------------------------------------------
 
@@ -64,8 +59,9 @@ What all is this addon doing?
 Is this production ready?
 ------------------------------------------------------------------------------
 
-O god, please do not use this
+Probably not. It _does_ work, but you should be really careful about including both the Ember _and_ React libraries in your application since that's quite a lot of JavaScript to ship to your users.
 
+I also make no guarantees about all React APIs working correctly. However, for basic components, this should work fine.
 
 License
 ------------------------------------------------------------------------------

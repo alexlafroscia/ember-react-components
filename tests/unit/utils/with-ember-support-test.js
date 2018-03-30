@@ -57,4 +57,28 @@ module('Unit | Utility | with-ember-support', function(hooks) {
       'Invoked the passed in action'
     );
   });
+
+  test('state is persisted through updated props', async function(assert) {
+    this.set('prop', 'foo');
+
+    await render(hbs`
+      {{set-state someValue=prop}}
+    `);
+
+    assert
+      .dom('[data-test="state"]')
+      .hasText('foo', 'Sets the state to the initial value');
+    assert
+      .dom('[data-test="prop"]')
+      .hasText('foo', 'The initial prop value is displayed');
+
+    this.set('prop', 'bar');
+
+    assert
+      .dom('[data-test="state"]')
+      .hasText('foo', 'Has the initial state after props change');
+    assert
+      .dom('[data-test="prop"]')
+      .hasText('bar', 'The prop has actually updated');
+  });
 });
