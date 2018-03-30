@@ -1,3 +1,4 @@
+// BEGIN-SNIPPET yield-to-children.js
 import React from 'react';
 import WithEmberSupport from 'ember-cli-react';
 
@@ -13,3 +14,4 @@ export default class YieldToChildren extends React.Component {
     return <div id="wrapper">{children}</div>;
   }
 }
+// END-SNIPPET

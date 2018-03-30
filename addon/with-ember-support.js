@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import YieldWrapper from './yield-wrapper';
 
 /**
+ * @hide
  * @function WithEmberSupport
  * @param {React.Component} klass The React class to "transform"
  * @return {Ember.Component} the resulting class
@@ -45,7 +46,7 @@ export function WithEmberSupport(Klass) {
       }
 
       this._reactElement = ReactDOM.render(
-        React.createElement(Klass, props, children),
+        <Klass {...props}>{children}</Klass>,
         this.element
       );
     }
