@@ -52,8 +52,7 @@ What all is this addon doing?
 
 * Provides imports for `react` and `react-dom`
 * Hooks up a bunch of necessary `babel` transforms
-* Includes the decorator for creating a React-Ember-component Frankenstein-ian monster class that does the "heavy lifting" to bridge the two frameworks
-* Handles injecting access to the `owner` in the React components
+* Provides a decorator for creating a thin wrapper around your React components that bridge the gap between the two libraries
 
 Is this production ready?
 ------------------------------------------------------------------------------
