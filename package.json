@@ -41,6 +41,8 @@
     "@types/ember-testing-helpers": "^0.0.3",
     "@types/handlebars": "^4.0.38",
     "@types/qunit": "^2.5.1",
+    "@types/react": "^16.3.17",
+    "@types/react-dom": "^16.0.6",
     "@types/rsvp": "^4.0.1",
     "babel-eslint": "^8.2.2",
     "broccoli-asset-rev": "^2.4.5",

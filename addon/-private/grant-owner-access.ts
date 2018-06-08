@@ -1,8 +1,17 @@
+import { Component as ReactComponent } from 'react';
 import { setOwner } from '@ember/application';
 
-const klassMap = new WeakMap();
+import Constructor from './constructor';
 
-function ensureMapHasOwner(owner) {
+type Owner = any;
+type KlassMap = WeakMap<
+  Owner,
+  WeakMap<Constructor<ReactComponent>, Constructor<ReactComponent>>
+>;
+
+const klassMap: KlassMap = new WeakMap();
+
+function ensureMapHasOwner(owner: Owner) {
   if (!klassMap.has(owner)) {
     klassMap.set(owner, new WeakMap());
   }
@@ -14,29 +23,29 @@ function ensureMapHasOwner(owner) {
  * class for every render, which not only is bad for performance but also
  * breaks the way that the wrapper translates updates to props down to
  * the underlying React component.
- *
- * @param {Class} Klass the class to extend with owner access
- * @param {object} owner the owner to grant access with
- * @return {Class} an extension of Klass with owner access
- * @hide
  */
-export default function grantOwnerAccess(Klass, owner) {
+export default function grantOwnerAccess<T extends Constructor<ReactComponent>>(
+  Klass: T,
+  owner: Owner
+): Constructor<ReactComponent> {
   ensureMapHasOwner(owner);
 
+  const mapForOwner = klassMap.get(owner)!;
+
   // Re-use the class we already created if possible
-  if (klassMap.get(owner).has(Klass)) {
-    return klassMap.get(owner).get(Klass);
+  if (mapForOwner.has(Klass)) {
+    return mapForOwner.get(Klass)!;
   }
 
   const KlassWithOwner = class extends Klass {
-    constructor() {
-      super(...arguments);
+    constructor(...args: any[]) {
+      super(...args);
 
       setOwner(this, owner);
     }
   };
 
-  klassMap.get(owner).set(Klass, KlassWithOwner);
+  mapForOwner.set(Klass, KlassWithOwner);
 
   return KlassWithOwner;
 }
