@@ -17,22 +17,31 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
-    'prettier'
+    'prettier',
+    'plugin:prettier/recommended'
   ],
   env: {
     browser: true
   },
   rules: {
-    'prettier/prettier': ['error', {
-      singleQuote: true
-    }],
-
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
 
     'ember/no-attrs-in-components': 'off'
   },
   overrides: [
+    // TypeScript files
+    {
+      parser: 'typescript-eslint-parser',
+      files: [
+        'addon/**/*.ts',
+        'tests/**/*.ts'
+      ],
+      rules: {
+        'no-undef': 'off',
+        'no-unused-vars': 'off'
+      }
+    },
     // node files
     {
       files: [
