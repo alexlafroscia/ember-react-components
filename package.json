@@ -15,7 +15,7 @@
   "repository": "https://github.com/alexlafroscia/ember-cli-react",
   "scripts": {
     "build": "ember build",
-    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "lint:js": "eslint --ext js --ext ts addon addon-test-support app config lib server test-support tests",
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
@@ -84,7 +84,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "testdouble": "^2.0.0",
-    "typescript": "^2.9.1"
+    "typescript": "^2.9.1",
+    "typescript-eslint-parser": "^16.0.0"
   },
   "engines": {
     "node": "6.* || >= 7.*"
