@@ -22,6 +22,11 @@
     "prepublishOnly": "ember ts:precompile",
     "postpublish": "ember ts:clean"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "peerDependencies": {
     "react": "^16",
     "react-dom": "^16"
@@ -34,6 +39,8 @@
     "ember-cli-htmlbars": "^2.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
     "@ember-decorators/babel-transforms": "^2.0.0",
     "@types/ember": "^2.8.25",
     "@types/ember-qunit": "^3.0.2",
@@ -80,6 +87,7 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
+    "husky": "^1.0.0-rc.8",
     "loader.js": "^4.2.3",
     "prettier": "^1.11.1",
     "qunit-dom": "^0.5.0",
