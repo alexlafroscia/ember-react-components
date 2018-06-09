@@ -20,7 +20,8 @@
     "test": "ember test",
     "test:all": "ember try:each",
     "prepublishOnly": "ember ts:precompile",
-    "postpublish": "ember ts:clean"
+    "postpublish": "ember ts:clean",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
