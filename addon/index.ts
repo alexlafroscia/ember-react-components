@@ -16,7 +16,7 @@ interface ComponentAttributes {
 
 export default function WithEmberSupport<T extends Constructor<ReactComponent>>(
   Klass: T
-) {
+): typeof EmberComponent {
   return class extends EmberComponent {
     /* Add type annotation for private `attrs` property on component */
     private attrs!: ComponentAttributes;
