@@ -29,6 +29,7 @@
     }
   },
   "peerDependencies": {
+    "ember-cli": ">=2.15.0",
     "react": "^16",
     "react-dom": "^16"
   },

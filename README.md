@@ -15,6 +15,11 @@ ember install alexlafroscia/ember-cli-react
 ember g ember-cli-react
 ```
 
+Compatibility
+------------------------------------------------------------------------------
+
+This addon requires Ember CLI 2.15 or higher.
+
 Usage
 ------------------------------------------------------------------------------
 
