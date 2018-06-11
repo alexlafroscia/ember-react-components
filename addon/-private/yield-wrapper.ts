@@ -1,4 +1,9 @@
-import { Component as ReactComponent, createElement } from 'react';
+import {
+  Component as ReactComponent,
+  createElement,
+  DetailedReactHTMLElement,
+  HTMLAttributes
+} from 'react';
 
 interface YieldWrapperProps {
   key: string;
@@ -24,7 +29,7 @@ export default class YieldWrapper extends ReactComponent<YieldWrapperProps> {
     element.parentNode!.replaceChild(fragment, element);
   }
 
-  render(): any {
+  render(): DetailedReactHTMLElement<HTMLAttributes<HTMLElement>, HTMLElement> {
     // This element is temporary. When this is mounted,
     // it will be replaced by the children nodes, handled by Ember.
     return createElement('span', {
