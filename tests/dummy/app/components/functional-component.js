@@ -1,6 +1,6 @@
 // BEGIN-SNIPPET functional-component.js
 import React from 'react';
-import WithEmberSupport from 'ember-cli-react';
+import WithEmberSupport from 'ember-react-components';
 
 export default WithEmberSupport(function FunctionalComponent(props) {
   const { name, children } = props;

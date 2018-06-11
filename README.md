@@ -1,7 +1,7 @@
-ember-cli-react
+ember-react-components
 ==============================================================================
 
-[![Build Status](https://travis-ci.org/alexlafroscia/ember-cli-react.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-cli-react)
+[![Build Status](https://travis-ci.org/alexlafroscia/ember-react-components.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-react-components)
 
 > Consume React components in Ember
 
@@ -11,8 +11,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```bash
-ember install alexlafroscia/ember-cli-react
-ember g ember-cli-react
+ember install ember-react-components
 ```
 
 Compatibility
@@ -30,7 +29,7 @@ As an example, you can create a component like this:
 ```javascript
 // app/components/my-react-component.js
 import React from 'react';
-import WithEmberSupport from 'ember-cli-react';
+import WithEmberSupport from 'ember-react-components';
 
 @WithEmberSupport
 export default class extends React.Component {

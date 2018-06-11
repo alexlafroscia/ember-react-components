@@ -1,5 +1,5 @@
 import React from 'react';
-import WithEmberSupport from 'ember-cli-react';
+import WithEmberSupport from 'ember-react-components';
 
 @WithEmberSupport
 export default class <%= classifiedModuleName %> extends React.Component {

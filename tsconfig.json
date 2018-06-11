@@ -28,10 +28,10 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "ember-cli-react": [
+      "ember-react-components": [
         "addon"
       ],
-      "ember-cli-react/*": [
+      "ember-react-components/*": [
         "addon/*"
       ],
       "*": [
