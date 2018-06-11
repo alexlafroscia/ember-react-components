@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-react',
+  name: 'ember-react-components',
 
   options: {
     babel: {

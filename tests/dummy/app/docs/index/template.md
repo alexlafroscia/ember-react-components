@@ -1,7 +1,7 @@
-ember-cli-react
+ember-react-components
 ==============================================================================
 
-[![Build Status](https://travis-ci.org/alexlafroscia/ember-cli-react.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-cli-react)
+[![Build Status](https://travis-ci.org/alexlafroscia/ember-react-components.svg?branch=master)](https://travis-ci.org/alexlafroscia/ember-react-components)
 
 > Consume React components in Ember
 

@@ -1,6 +1,6 @@
 # Stateless, Functional Components 
 
-If you don't want to create a normal, `Class`-based component, `ember-cli-react` also supports functional components.
+If you don't want to create a normal, `Class`-based component, `ember-react-components` also supports functional components.
 
 Instead of applying `WithEmberSupport` as a decorator, you pass a function directly into it and export the returned value.
 

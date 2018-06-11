@@ -1,9 +1,11 @@
 {
-  "name": "ember-cli-react",
+  "name": "ember-react-components",
   "version": "1.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "React component support in Ember",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "decorator",
+    "react"
   ],
   "license": "MIT",
   "author": "",
@@ -11,8 +13,8 @@
     "doc": "doc",
     "test": "tests"
   },
-  "homepage": "https://alexlafroscia.com/ember-cli-react",
-  "repository": "https://github.com/alexlafroscia/ember-cli-react",
+  "homepage": "https://alexlafroscia.com/ember-react-components",
+  "repository": "https://github.com/alexlafroscia/ember-react-components",
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint --ext js --ext ts .",
