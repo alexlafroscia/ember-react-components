@@ -1,0 +1,10 @@
+{{#docs-demo as |demo|}}
+  {{#demo.example name='demo-using-functional-component.hbs'}}
+    {{#functional-component}}
+      <p>This is yielded into the React children</p>
+    {{/functional-component}}
+  {{/demo.example}}
+
+  {{demo.snippet 'functional-component.js' label='component.js'}}
+  {{demo.snippet 'demo-using-functional-component.hbs'}}
+{{/docs-demo}}
