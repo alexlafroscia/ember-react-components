@@ -1,0 +1,13 @@
+# Build Output
+dist/
+tmp/
+
+# Dependencies
+node_modules/
+
+# Blueprints
+blueprints/**/*
+!blueprints/**/index.js
+
+# TypeScript Declarations
+types/
