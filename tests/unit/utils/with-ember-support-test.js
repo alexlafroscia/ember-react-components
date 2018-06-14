@@ -117,4 +117,24 @@ module('Unit | Utility | with-ember-support', function(hooks) {
       assert.dom('[data-test="bar"]').exists();
     });
   });
+
+  module('supporting stateless, functional components', function() {
+    test('it can render them inline', async function(assert) {
+      await render(hbs`
+        {{functional-component name='Alex'}}
+      `);
+
+      assert.dom('[data-test-name]').hasText('Alex');
+    });
+
+    test('it can render children', async function(assert) {
+      await render(hbs`
+        {{#functional-component}}
+          <div data-test="foo">Foo</div>
+        {{/functional-component}}
+      `);
+
+      assert.dom('[data-test="foo"]').hasText('Foo');
+    });
+  });
 });

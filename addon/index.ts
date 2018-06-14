@@ -9,13 +9,14 @@ import ReactDOM from 'react-dom';
 import Constructor from './-private/constructor';
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
+import componentIsFunctional from './-private/component-is-functional';
 
 interface ComponentAttributes {
   [key: string]: any;
 }
 
 export default function WithEmberSupport<T extends Constructor<ReactComponent>>(
-  Klass: T
+  Klass: T | React.SFC
 ): typeof EmberComponent {
   return class extends EmberComponent {
     /* Add type annotation for private `attrs` property on component */
@@ -45,11 +46,17 @@ export default function WithEmberSupport<T extends Constructor<ReactComponent>>(
         ];
       }
 
-      const owner = getOwner(this);
-      const KlassWithOwner = grantOwnerAccess(Klass, owner);
+      let KlassToRender;
+
+      if (componentIsFunctional(Klass)) {
+        KlassToRender = Klass;
+      } else {
+        const owner = getOwner(this);
+        KlassToRender = grantOwnerAccess(Klass, owner);
+      }
 
       ReactDOM.render(
-        React.createElement(KlassWithOwner, props, children),
+        React.createElement(KlassToRender, props, children),
         this.element
       );
     }

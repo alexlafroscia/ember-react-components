@@ -33,6 +33,7 @@ Router.map(function() {
       this.route('generator');
       this.route('services');
       this.route('children');
+      this.route('functional');
     });
 
     this.route('api', function() {
