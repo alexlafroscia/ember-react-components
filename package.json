@@ -47,11 +47,10 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "@ember-decorators/babel-transforms": "^2.0.0",
-    "@types/ember": "^2.8.25",
+    "@types/ember": "^2.8.26",
     "@types/ember-qunit": "^3.0.2",
     "@types/ember-test-helpers": "^0.7.1",
     "@types/ember-testing-helpers": "^0.0.3",
-    "@types/handlebars": "^4.0.38",
     "@types/qunit": "^2.5.1",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
@@ -101,8 +100,11 @@
     "react-dom": "^16.4.1",
     "standard-version": "^4.4.0",
     "testdouble": "^2.0.0",
-    "typescript": "^2.9.1",
+    "typescript": "^2.9.2",
     "typescript-eslint-parser": "^16.0.0"
+  },
+  "resolutions": {
+    "@types/ember": "2.8.26"
   },
   "engines": {
     "node": "6.* || >= 7.*"

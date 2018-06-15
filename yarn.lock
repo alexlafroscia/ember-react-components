@@ -342,15 +342,19 @@
     "@types/jquery" "*"
     "@types/rsvp" "*"
 
-"@types/ember@*", "@types/ember@^2.8.25":
-  version "2.8.25"
-  resolved "https://registry.yarnpkg.com/@types/ember/-/ember-2.8.25.tgz#351f9e1526d1980f7864878beb06718995252361"
+"@types/ember@*", "@types/ember@2.8.26", "@types/ember@^2.8.26":
+  version "2.8.26"
+  resolved "https://registry.yarnpkg.com/@types/ember/-/ember-2.8.26.tgz#68fc767a9900c64aa97e7b23421396dc3312a76f"
+  dependencies:
+    "@types/handlebars" "*"
+    "@types/jquery" "*"
+    "@types/rsvp" "*"
 
 "@types/estree@*", "@types/estree@0.0.38":
   version "0.0.38"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.38.tgz#c1be40aa933723c608820a99a373a16d215a1ca2"
 
-"@types/handlebars@^4.0.38":
+"@types/handlebars@*":
   version "4.0.38"
   resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.38.tgz#d0ebec1934c0bba97f99a0cb703fe2ef8c4a662f"
 
@@ -10240,9 +10244,9 @@ typescript-eslint-parser@^16.0.0:
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-typescript@^2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.1.tgz#fdb19d2c67a15d11995fd15640e373e09ab09961"
+typescript@^2.9.2:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"
