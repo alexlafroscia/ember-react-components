@@ -61,9 +61,7 @@ What all is this addon doing?
 Is this production ready?
 ------------------------------------------------------------------------------
 
-Probably not. It _does_ work, but you should be really careful about including both the Ember _and_ React libraries in your application since that's quite a lot of JavaScript to ship to your users.
-
-I also make no guarantees about all React APIs working correctly. However, for basic components, this should work fine.
+It _does_ work, but you should be really careful about including both the Ember _and_ React libraries in your application since that's quite a lot of JavaScript to ship to your users.
 
 License
 ------------------------------------------------------------------------------
