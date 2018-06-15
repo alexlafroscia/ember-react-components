@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/alexlafroscia/ember-react-components/compare/v1.1.0...v2.0.0) (2018-06-15)
+
+
+### Code Refactoring
+
+* rename the package to `ember-react-components` ([0bec444](https://github.com/alexlafroscia/ember-react-components/commit/0bec444))
+
+
+### BREAKING CHANGES
+
+* New package name and installation instructions
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/alexlafroscia/ember-cli-react/compare/v1.0.2...v1.1.0) (2018-06-14)
 
