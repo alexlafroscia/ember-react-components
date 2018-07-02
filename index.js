@@ -17,28 +17,32 @@ module.exports = {
 
   included() {
     this._super.included.apply(this, arguments);
-
-    this.import(
-      {
-        development: 'node_modules/react/umd/react.development.js',
-        production: 'node_modules/react/umd/react.production.min.js'
-      },
-      {
-        using: [{ transformation: 'amd', as: 'react' }]
-      }
-    );
-
-    this.import(
-      {
-        development: 'node_modules/react-dom/umd/react-dom.development.js',
-        production: 'node_modules/react-dom/umd/react-dom.production.min.js'
-      },
-      {
-        using: [{ transformation: 'amd', as: 'react-dom' }]
-      }
-    );
-
     const opts = this.appOptions();
+    const cliOpts = opts['ember-react-components'];
+    const isImportingReact = !cliOpts || (cliOpts && cliOpts.importReact);
+
+    if(isImportingReact) {
+      this.import(
+        {
+          development: 'node_modules/react/umd/react.development.js',
+          production: 'node_modules/react/umd/react.production.min.js'
+        },
+        {
+          using: [{ transformation: 'amd', as: 'react' }]
+        }
+      );
+
+      this.import(
+        {
+          development: 'node_modules/react-dom/umd/react-dom.development.js',
+          production: 'node_modules/react-dom/umd/react-dom.production.min.js'
+        },
+        {
+          using: [{ transformation: 'amd', as: 'react-dom' }]
+        }
+      );
+    }
+
     opts.babel = opts.babel || {};
     opts.babel.plugins = opts.babel.plugins || [];
 
