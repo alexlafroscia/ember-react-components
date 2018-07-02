@@ -18,13 +18,18 @@ module.exports = {
   included() {
     this._super.included.apply(this, arguments);
 
+    const opts = this.appOptions();
+    const cliOpts = opts['ember-react-components'];
+    const outputFile = (cliOpts && cliOpts.outputFile) || '/assets/vendor.js';
+
     this.import(
       {
         development: 'node_modules/react/umd/react.development.js',
         production: 'node_modules/react/umd/react.production.min.js'
       },
       {
-        using: [{ transformation: 'amd', as: 'react' }]
+        using: [{ transformation: 'amd', as: 'react' }],
+        outputFile
       }
     );
 
@@ -34,11 +39,11 @@ module.exports = {
         production: 'node_modules/react-dom/umd/react-dom.production.min.js'
       },
       {
-        using: [{ transformation: 'amd', as: 'react-dom' }]
+        using: [{ transformation: 'amd', as: 'react-dom' }],
+        outputFile
       }
     );
 
-    const opts = this.appOptions();
     opts.babel = opts.babel || {};
     opts.babel.plugins = opts.babel.plugins || [];
 
