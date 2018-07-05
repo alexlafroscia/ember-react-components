@@ -51,6 +51,20 @@ And render it like this:
 
 That would create a component that renders `Hello, Alex`.
 
+Options
+------------------------------------------------------------------------------
+
+* `outputFile` option imports `react` and `react-dom` into a separate file than `/assets/vendor.js`. This is useful if your entire Ember application doesn't require `react`. The separate file containing `react` and `react-dom` can be imported via a template or initializer.
+
+```javascript
+// ember-cli-build.js
+let app = new EmberApp(defaults, {
+  'ember-react-components': {
+    outputFile: '/assets/react.js'
+  }
+});
+```
+
 What all is this addon doing?
 ------------------------------------------------------------------------------
 
