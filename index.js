@@ -17,7 +17,7 @@ module.exports = {
 
   included() {
     this._super.included.apply(this, arguments);
-
+    
     const opts = this.appOptions();
     const cliOpts = opts['ember-react-components'];
     const outputFile = (cliOpts && cliOpts.outputFile) || '/assets/vendor.js';
