@@ -28,6 +28,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('docs', function() {
     this.route('installation');
+    this.route('options');
 
     this.route('features', function() {
       this.route('generator');
