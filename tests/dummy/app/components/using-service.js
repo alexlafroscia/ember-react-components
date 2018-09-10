@@ -6,7 +6,8 @@ import { service } from '@ember-decorators/service';
 
 @WithEmberSupport
 export default class UsingService extends React.Component {
-  @service session;
+  @service
+  session;
 
   render() {
     const session = get(this, 'session');
