@@ -1,13 +1,16 @@
-# Build Output
-dist/
-tmp/
+# unconventional js
+/blueprints/*/files/
+/vendor/
 
-# Dependencies
-node_modules/
+# compiled output
+/dist/
+/tmp/
 
-# Blueprints
-blueprints/**/*
-!blueprints/**/index.js
+# dependencies
+/bower_components/
 
-# TypeScript Declarations
-types/
+# misc
+/coverage/
+
+# ember-try
+/.node_modules.ember-try/
