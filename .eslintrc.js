@@ -5,7 +5,8 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
+      legacyDecorators: true
     }
   },
   plugins: ['babel', 'ember', 'react', 'prettier'],
