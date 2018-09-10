@@ -8,12 +8,7 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: [
-    'babel',
-    'ember',
-    'react',
-    'prettier'
-  ],
+  plugins: ['babel', 'ember', 'react', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
@@ -33,10 +28,7 @@ module.exports = {
     // TypeScript files
     {
       parser: 'typescript-eslint-parser',
-      files: [
-        'addon/**/*.ts',
-        'tests/**/*.ts'
-      ],
+      files: ['addon/**/*.ts', 'tests/**/*.ts'],
       rules: {
         'no-undef': 'off',
         'no-unused-vars': 'off'
@@ -50,13 +42,10 @@ module.exports = {
         'testem.js',
         'ember-cli-build.js',
         'config/**/*.js',
+        'lib/**/*.js',
         'tests/dummy/config/**/*.js'
       ],
-      excludedFiles: [
-        'app/**',
-        'addon/**',
-        'tests/dummy/app/**'
-      ],
+      excludedFiles: ['app/**', 'addon/**', 'tests/dummy/app/**'],
       parserOptions: {
         sourceType: 'script',
         ecmaVersion: 2015
@@ -66,9 +55,13 @@ module.exports = {
         node: true
       },
       plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-      })
+      rules: Object.assign(
+        {},
+        require('eslint-plugin-node').configs.recommended.rules,
+        {
+          // add your custom rules and overrides for node files here
+        }
+      )
     }
   ]
 };

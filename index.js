@@ -1,13 +1,9 @@
 'use strict';
 
+const configureJsxTransform = require('./lib/configure-jsx-transform');
+
 module.exports = {
   name: 'ember-react-components',
-
-  options: {
-    babel: {
-      plugins: ['transform-class-properties', 'transform-react-jsx']
-    }
-  },
 
   appOptions() {
     return (
@@ -15,7 +11,7 @@ module.exports = {
     );
   },
 
-  included() {
+  included(parent) {
     this._super.included.apply(this, arguments);
 
     const opts = this.appOptions();
@@ -44,16 +40,6 @@ module.exports = {
       }
     );
 
-    opts.babel = opts.babel || {};
-    opts.babel.plugins = opts.babel.plugins || [];
-
-    const existingPlugins = opts.babel.plugins || [];
-
-    opts.babel.plugins = [
-      ...existingPlugins,
-      'transform-decorators-legacy',
-      'transform-class-properties',
-      'transform-react-jsx'
-    ];
+    configureJsxTransform(parent);
   }
 };
