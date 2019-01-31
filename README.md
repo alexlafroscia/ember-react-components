@@ -11,7 +11,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```bash
-ember install ember-react-components
+ember install ember-react-components @ember-decorators/babel-transforms
 ```
 
 Compatibility
