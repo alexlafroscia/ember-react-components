@@ -3,28 +3,19 @@ import { get } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 
-import React, { Component as ReactComponent } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Constructor from './-private/constructor';
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
 import componentIsFunctional from './-private/component-is-functional';
 
-interface ComponentAttributes {
-  [key: string]: any;
-}
-
-export default function WithEmberSupport<T extends Constructor<ReactComponent>>(
-  Klass: T | React.SFC
-): typeof EmberComponent {
+export default function WithEmberSupport(Klass) {
   return class extends EmberComponent {
     /* Add type annotation for private `attrs` property on component */
-    private attrs!: ComponentAttributes;
-
-    private getPropsForReact(): ComponentAttributes {
-      return Object.keys(this.attrs).reduce((acc: ComponentAttributes, key) => {
-        const value = get(this, key as keyof this);
+    getPropsForReact() {
+      return Object.keys(this.attrs).reduce((acc, key) => {
+        const value = get(this, key);
 
         acc[key] = value;
 
@@ -32,7 +23,7 @@ export default function WithEmberSupport<T extends Constructor<ReactComponent>>(
       }, {});
     }
 
-    private mountElement() {
+    mountElement() {
       const props = this.getPropsForReact();
       let { children } = props;
 
