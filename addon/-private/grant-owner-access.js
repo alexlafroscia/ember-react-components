@@ -1,17 +1,8 @@
-import { Component as ReactComponent } from 'react';
 import { setOwner } from '@ember/application';
 
-import Constructor from './constructor';
+const klassMap = new WeakMap();
 
-type Owner = any;
-type KlassMap = WeakMap<
-  Owner,
-  WeakMap<Constructor<ReactComponent>, Constructor<ReactComponent>>
->;
-
-const klassMap: KlassMap = new WeakMap();
-
-function ensureMapHasOwner(owner: Owner) {
+function ensureMapHasOwner(owner) {
   if (!klassMap.has(owner)) {
     klassMap.set(owner, new WeakMap());
   }
@@ -24,21 +15,18 @@ function ensureMapHasOwner(owner: Owner) {
  * breaks the way that the wrapper translates updates to props down to
  * the underlying React component.
  */
-export default function grantOwnerAccess<T extends Constructor<ReactComponent>>(
-  Klass: T,
-  owner: Owner
-): Constructor<ReactComponent> {
+export default function grantOwnerAccess(Klass, owner) {
   ensureMapHasOwner(owner);
 
-  const mapForOwner = klassMap.get(owner)!;
+  const mapForOwner = klassMap.get(owner);
 
   // Re-use the class we already created if possible
   if (mapForOwner.has(Klass)) {
-    return mapForOwner.get(Klass)!;
+    return mapForOwner.get(Klass);
   }
 
   const KlassWithOwner = class extends Klass {
-    constructor(...args: any[]) {
+    constructor(...args) {
       super(...args);
 
       setOwner(this, owner);
