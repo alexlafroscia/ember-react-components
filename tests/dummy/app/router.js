@@ -1,10 +1,11 @@
-import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
 import { get, getWithDefault } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { scheduleOnce } from '@ember/runloop';
 
-const Router = EmberRouter.extend({
+import config from './config/environment';
+
+const Router = AddonDocsRouter.extend({
   metrics: service(),
 
   location: config.locationType,
@@ -26,7 +27,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('docs', function() {
+  docsRoute(this, function() {
     this.route('installation');
     this.route('options');
 
@@ -35,10 +36,6 @@ Router.map(function() {
       this.route('services');
       this.route('children');
       this.route('functional');
-    });
-
-    this.route('api', function() {
-      this.route('item', { path: '/*path' });
     });
   });
 });
