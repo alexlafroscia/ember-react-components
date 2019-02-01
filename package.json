@@ -31,17 +31,15 @@
       "pre-commit": "lint-staged"
     }
   },
-  "peerDependencies": {
-    "ember-cli": ">=2.15.0",
-    "react": "^16",
-    "react-dom": "^16"
-  },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "ember-auto-import": "^1.2.19",
     "ember-cli-babel": "^7.3.0",
     "ember-cli-htmlbars": "^3.0.0",
-    "ember-cli-version-checker": "^2.1.2"
+    "ember-cli-version-checker": "^2.1.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
@@ -87,8 +85,6 @@
     "loader.js": "^4.7.0",
     "prettier": "^1.16.3",
     "qunit-dom": "^0.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "standard-version": "^4.4.0",
     "testdouble": "^2.0.0"
   },
