@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.2...v2.0.3) (2019-02-01)
+
+
+### Bug Fixes
+
+* install React, React DOM through `ember-auto-import` ([4f99ad8](https://github.com/alexlafroscia/ember-react-components/commit/4f99ad8)), closes [#23](https://github.com/alexlafroscia/ember-react-components/issues/23)
+* remove `ember-cli-typescript` ([6853e63](https://github.com/alexlafroscia/ember-react-components/commit/6853e63))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.1...v2.0.2) (2018-07-06)
 
