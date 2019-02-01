@@ -118,23 +118,45 @@ module('Integration | Utility | with-ember-support', function(hooks) {
     });
   });
 
-  module('supporting stateless, functional components', function() {
-    test('it can render them inline', async function(assert) {
-      await render(hbs`
-        {{functional-component name='Alex'}}
-      `);
+  module('supporting functional components', function() {
+    module('with traditional functions', function() {
+      test('it can render them inline', async function(assert) {
+        await render(hbs`
+          {{traditional-functional-component name='Alex'}}
+        `);
 
-      assert.dom('[data-test-name]').hasText('Alex');
+        assert.dom('[data-test-name]').hasText('Alex');
+      });
+
+      test('it can render children', async function(assert) {
+        await render(hbs`
+          {{#traditional-functional-component}}
+            <div data-test="foo">Foo</div>
+          {{/traditional-functional-component}}
+        `);
+
+        assert.dom('[data-test="foo"]').hasText('Foo');
+      });
     });
 
-    test('it can render children', async function(assert) {
-      await render(hbs`
-        {{#functional-component}}
-          <div data-test="foo">Foo</div>
-        {{/functional-component}}
-      `);
+    module('with arrow functions', function() {
+      test('it can render them inline', async function(assert) {
+        await render(hbs`
+          {{arrow-function-component name='Alex'}}
+        `);
 
-      assert.dom('[data-test="foo"]').hasText('Foo');
+        assert.dom('[data-test-name]').hasText('Alex');
+      });
+
+      test('it can render children', async function(assert) {
+        await render(hbs`
+          {{#arrow-function-component}}
+            <div data-test="foo">Foo</div>
+          {{/arrow-function-component}}
+        `);
+
+        assert.dom('[data-test="foo"]').hasText('Foo');
+      });
     });
   });
 });
