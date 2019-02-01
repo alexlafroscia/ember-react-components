@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.3...v2.0.4) (2019-02-01)
+
+
+### Bug Fixes
+
+* remove TypeScript compilation hooks ([0eccca6](https://github.com/alexlafroscia/ember-react-components/commit/0eccca6))
+* support arrow functions for components ([b9a809b](https://github.com/alexlafroscia/ember-react-components/commit/b9a809b)), closes [#27](https://github.com/alexlafroscia/ember-react-components/issues/27)
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.2...v2.0.3) (2019-02-01)
 
