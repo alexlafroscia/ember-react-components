@@ -4,7 +4,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import td from 'testdouble';
 
-module('Unit | Utility | with-ember-support', function(hooks) {
+module('Integration | Utility | with-ember-support', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it can render a React component', async function(assert) {
