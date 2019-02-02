@@ -65,6 +65,15 @@ module.exports = function() {
             }
           }
         },
+        {
+          name: 'stage-1-decorators',
+          npm: {
+            devDependencies: {
+              '@ember-decorators/babel-transforms': '^2.0.0',
+              'ember-decorators': '^2.0.0'
+            }
+          }
+        },
         // The default `.travis.yml` runs this scenario via `npm test`,
         // not via `ember try`. It's still included here so that running
         // `ember try:each` manually or from a customized CI config will run it

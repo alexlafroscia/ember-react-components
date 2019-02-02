@@ -2,12 +2,16 @@
 import React from 'react';
 import WithEmberSupport from 'ember-react-components';
 import { get } from '@ember/object';
-import { service } from '@ember-decorators/service';
+import {
+  inject as injectService,
+  service as oldInjectService
+} from '@ember-decorators/service';
+
+const service = oldInjectService || injectService;
 
 @WithEmberSupport
 export default class UsingService extends React.Component {
-  @service
-  session;
+  @service session;
 
   render() {
     const session = get(this, 'session');

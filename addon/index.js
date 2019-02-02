@@ -10,8 +10,8 @@ import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
 import componentIsFunctional from './-private/component-is-functional';
 
-export default function WithEmberSupport(Klass) {
-  return class extends EmberComponent {
+const wrapReactComponent = Klass =>
+  class extends EmberComponent {
     /* Add type annotation for private `attrs` property on component */
     getPropsForReact() {
       return Object.keys(this.attrs).reduce((acc, key) => {
@@ -68,4 +68,13 @@ export default function WithEmberSupport(Klass) {
       super.willDestroyElement();
     }
   };
+
+export default function WithEmberSupport(descriptor) {
+  return descriptor.toString() === '[object Descriptor]'
+    ? Object.assign({}, descriptor, {
+        finisher(Klass) {
+          return wrapReactComponent(Klass);
+        }
+      })
+    : wrapReactComponent(descriptor);
 }
