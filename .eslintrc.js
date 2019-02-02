@@ -38,6 +38,8 @@ module.exports = {
     // node files
     {
       files: [
+        '.eslintrc.js',
+        '.template-lintrc.js',
         'commitlint.config.js',
         'index.js',
         'testem.js',
