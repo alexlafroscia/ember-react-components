@@ -3,7 +3,7 @@
 const configureJsxTransform = require('./lib/configure-jsx-transform');
 
 module.exports = {
-  name: 'ember-react-components',
+  name: require('./package').name,
 
   included(parent) {
     this._super.included.apply(this, arguments);
