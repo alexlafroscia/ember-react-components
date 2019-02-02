@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "ember-auto-import": "^1.2.19",
     "ember-cli-babel": "^7.4.1",
