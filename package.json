@@ -1,6 +1,6 @@
 {
   "name": "ember-react-components",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "React component support in Ember",
   "keywords": [
     "ember-addon",

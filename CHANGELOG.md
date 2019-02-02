@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.4...v3.0.0) (2019-02-02)
+
+
+### Code Refactoring
+
+* remove Babel 6 support ([b076935](https://github.com/alexlafroscia/ember-react-components/commit/b076935))
+
+
+### Features
+
+* support Stage 2 decorators ([529e6f4](https://github.com/alexlafroscia/ember-react-components/commit/529e6f4)), closes [#29](https://github.com/alexlafroscia/ember-react-components/issues/29)
+
+
+### BREAKING CHANGES
+
+* Remove automatic Babel 6 support. For continued support, the React JSX Babel transform can be supplied manually by the application configuration.
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.3...v2.0.4) (2019-02-01)
 
