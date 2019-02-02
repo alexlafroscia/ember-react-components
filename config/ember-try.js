@@ -58,14 +58,6 @@ module.exports = function() {
           }
         },
         {
-          name: 'babel-6',
-          npm: {
-            dependencies: {
-              'ember-cli-babel': '^6.6.0'
-            }
-          }
-        },
-        {
           name: 'stage-1-decorators',
           npm: {
             devDependencies: {
