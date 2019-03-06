@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/alexlafroscia/ember-react-components/compare/v3.0.0...v3.0.1) (2019-03-06)
+
+
+### Bug Fixes
+
+* better detection of existing JSX plugin ([cc55646](https://github.com/alexlafroscia/ember-react-components/commit/cc55646))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/alexlafroscia/ember-react-components/compare/v2.0.4...v3.0.0) (2019-02-02)
 
