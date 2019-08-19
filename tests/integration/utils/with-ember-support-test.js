@@ -82,14 +82,12 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       .hasText('bar', 'The prop has actually updated');
   });
 
-  module('usage with `ember-decorators`', function() {
-    test('it works with services', async function(assert) {
-      this.owner.lookup('service:session').set('userName', 'Alex');
+  test('it works with services', async function(assert) {
+    this.owner.lookup('service:session').set('userName', 'Alex');
 
-      await render(hbs`{{using-service}}`);
+    await render(hbs`{{using-service}}`);
 
-      assert.dom('p').hasText('Hello, Alex');
-    });
+    assert.dom('p').hasText('Hello, Alex');
   });
 
   module('supporting yields and children', function() {

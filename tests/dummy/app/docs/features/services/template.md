@@ -1,15 +1,7 @@
 # Using Services
 
-Services can be used through the [`@ember-decorators`][ember-decorators] addon. Start off by installing it
-
-```bash
-ember install ember-decorators@next
-```
-
-With that set up, you can inject references to a service the same way you can with an Ember component
+Services can be injected through the use of the `service` decorator, the same way as with an ES6-style Ember class.
 
 {{docs/features/services/demo-service-injection}}
 
-Note that it's important to use `Ember.get` to access the service if you're working with an Ember version below `3.1`. Above that version, thanks to ES5 getters on computed properties, you should be able to access an injected service just like another other property (without `Ember.get`).
-
-[ember-decorators]: https://github.com/ember-decorators/ember-decorators
+This provides a useful way to access shared data in your application without needing to pass things in as props.
