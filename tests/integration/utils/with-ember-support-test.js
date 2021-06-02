@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
-import td from 'testdouble';
+import sinon from 'sinon';
 
 module('Integration | Utility | with-ember-support', function (hooks) {
   setupRenderingTest(hooks);
@@ -42,7 +42,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
   });
 
   test('an action passed into the component can be called', async function (assert) {
-    const action = td.function();
+    const action = sinon.stub();
     this.set('action', action);
 
     await render(hbs`
@@ -51,11 +51,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
     await click('button');
 
-    assert.equal(
-      td.explain(action).callCount,
-      1,
-      'Invoked the passed in action'
-    );
+    assert.ok(action.calledOnce, 'Invoked the passed in action');
   });
 
   test('state is persisted through updated props', async function (assert) {
