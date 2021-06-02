@@ -1,30 +1,28 @@
-import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
-import { get, getWithDefault } from '@ember/object';
+import EmberRouter from '@ember/routing/router';
+import { docsRoute } from 'ember-cli-addon-docs/router';
 import { inject as service } from '@ember/service';
-import { scheduleOnce } from '@ember/runloop';
 
 import config from './config/environment';
 
-const Router = AddonDocsRouter.extend({
-  metrics: service(),
+export default class Router extends EmberRouter {
+  @service metrics;
+  @service router;
 
-  location: config.locationType,
-  rootURL: config.rootURL,
+  location = config.locationType;
+  rootURL = config.rootURL;
 
-  didTransition() {
-    this._super(...arguments);
-    this._trackPage();
-  },
+  constructor() {
+    super(...arguments);
 
-  _trackPage() {
-    scheduleOnce('afterRender', this, () => {
-      const page = get(this, 'url');
-      const title = getWithDefault(this, 'currentRouteName', 'unknown');
+    let router = this.router;
+    router.on('routeDidChange', () => {
+      const page = router.currentURL;
+      const title = router.currentRouteName || 'unknown';
 
-      get(this, 'metrics').trackPage({ page, title });
+      this.metrics.trackPage({ page, title });
     });
   }
-});
+}
 
 Router.map(function() {
   docsRoute(this, function() {
@@ -39,5 +37,3 @@ Router.map(function() {
     });
   });
 });
-
-export default Router;

@@ -16,8 +16,10 @@ ember install ember-react-components @ember-decorators/babel-transforms
 
 Compatibility
 ------------------------------------------------------------------------------
+* Ember.js v3.13 or above
+* Node.js v12 or above
 
-This addon requires Ember CLI 2.15 or higher.
+This addon requires Ember CLI 3.13 or higher.
 
 Usage
 ------------------------------------------------------------------------------
@@ -46,7 +48,7 @@ export default class extends React.Component {
 And render it like this:
 
 ```handlebars
-{{my-react-component name='Alex'}}
+<MyReactComponent @name='Alex' />
 ```
 
 That would create a component that renders `Hello, Alex`.
@@ -76,6 +78,12 @@ Is this production ready?
 ------------------------------------------------------------------------------
 
 It _does_ work, but you should be really careful about including both the Ember _and_ React libraries in your application since that's quite a lot of JavaScript to ship to your users.
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
 
 License
 ------------------------------------------------------------------------------
