@@ -9,7 +9,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
   test('it can render a React component', async function (assert) {
     await render(hbs`
-      {{basic-component}}
+      <BasicComponent />
     `);
 
     assert
@@ -21,7 +21,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('foo', 'bar');
 
     await render(hbs`
-      {{with-properties foo=foo}}
+      <WithProperties @foo={{foo}} />
     `);
 
     assert.dom('button').hasText('Updated is false', 'Has the initial state');
@@ -46,7 +46,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('action', action);
 
     await render(hbs`
-      {{invoke-action action=action}}
+      <InvokeAction @action={{action}} />
     `);
 
     await click('button');
@@ -58,7 +58,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('prop', 'foo');
 
     await render(hbs`
-      {{set-state someValue=prop}}
+      <SetState @someValue={{prop}} />
     `);
 
     assert
@@ -82,7 +82,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     test('it works with services', async function (assert) {
       this.owner.lookup('service:session').set('userName', 'Alex');
 
-      await render(hbs`{{using-service}}`);
+      await render(hbs`<UsingService />`);
 
       assert.dom('p').hasText('Hello, Alex');
     });
@@ -91,9 +91,9 @@ module('Integration | Utility | with-ember-support', function (hooks) {
   module('supporting yields and children', function () {
     test('it can yield the block to the React children', async function (assert) {
       await render(hbs`
-        {{#yield-to-children}}
+        <YieldToChildren>
           <h1>Child content</h1>
-        {{/yield-to-children}}
+        </YieldToChildren>
       `);
 
       assert.dom('#wrapper').exists();
@@ -102,10 +102,10 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
     test('the yield can have multiple children', async function (assert) {
       await render(hbs`
-        {{#yield-to-children}}
+        <YieldToChildren>
           <p data-test="foo">Foo</p>
           <p data-test="bar">Bar</p>
-        {{/yield-to-children}}
+        </YieldToChildren>
       `);
 
       assert.dom('#wrapper').exists();
@@ -118,7 +118,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     module('with traditional functions', function () {
       test('it can render them inline', async function (assert) {
         await render(hbs`
-          {{traditional-functional-component name='Alex'}}
+          <TraditionalFunctionalComponent @name="Alex" />
         `);
 
         assert.dom('[data-test-name]').hasText('Alex');
@@ -126,9 +126,9 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
       test('it can render children', async function (assert) {
         await render(hbs`
-          {{#traditional-functional-component}}
+          <TraditionalFunctionalComponent>
             <div data-test="foo">Foo</div>
-          {{/traditional-functional-component}}
+          </TraditionalFunctionalComponent>
         `);
 
         assert.dom('[data-test="foo"]').hasText('Foo');
@@ -138,7 +138,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     module('with arrow functions', function () {
       test('it can render them inline', async function (assert) {
         await render(hbs`
-          {{arrow-function-component name='Alex'}}
+          <ArrowFunctionComponent @name="Alex" />
         `);
 
         assert.dom('[data-test-name]').hasText('Alex');
@@ -146,9 +146,9 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
       test('it can render children', async function (assert) {
         await render(hbs`
-          {{#arrow-function-component}}
+          <ArrowFunctionComponent>
             <div data-test="foo">Foo</div>
-          {{/arrow-function-component}}
+          </ArrowFunctionComponent>
         `);
 
         assert.dom('[data-test="foo"]').hasText('Foo');
