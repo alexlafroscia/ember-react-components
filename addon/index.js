@@ -1,4 +1,4 @@
-import EmberComponent from '@ember/component';
+import EmberComponent from '@glimmer/component';
 import { get } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
-import componentIsFunctional from './-private/component-is-functional';
+import isFunctionalComponent from './-private/is-functional-component';
 
 const wrapReactComponent = (Klass) =>
   class extends EmberComponent {
@@ -39,7 +39,7 @@ const wrapReactComponent = (Klass) =>
 
       let KlassToRender;
 
-      if (componentIsFunctional(Klass)) {
+      if (isFunctionalComponent(Klass)) {
         KlassToRender = Klass;
       } else {
         const owner = getOwner(this);
