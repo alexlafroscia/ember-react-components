@@ -1,10 +1,9 @@
-import EmberRouter from '@ember/routing/router';
-import { docsRoute } from 'ember-cli-addon-docs/router';
+import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
 import { inject as service } from '@ember/service';
 
 import config from './config/environment';
 
-export default class Router extends EmberRouter {
+export default class Router extends AddonDocsRouter {
   @service metrics;
   @service router;
 
