@@ -1,4 +1,4 @@
-import EmberComponent from '@glimmer/component';
+import EmberComponent from '@ember/component';
 import { get } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
@@ -37,14 +37,9 @@ const wrapReactComponent = (Klass) =>
         ];
       }
 
-      let KlassToRender;
-
-      if (isFunctionalComponent(Klass)) {
-        KlassToRender = Klass;
-      } else {
-        const owner = getOwner(this);
-        KlassToRender = grantOwnerAccess(Klass, owner);
-      }
+      const KlassToRender = isFunctionalComponent(Klass)
+        ? Klass
+        : grantOwnerAccess(Klass, getOwner(this));
 
       ReactDOM.render(
         React.createElement(KlassToRender, props, children),
