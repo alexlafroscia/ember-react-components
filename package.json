@@ -35,8 +35,8 @@
     "react-dom": "16.14.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.0.0",
-    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@ember/edition-utils": "^1.1.1",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.2.6",
