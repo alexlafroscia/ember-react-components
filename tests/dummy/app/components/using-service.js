@@ -4,7 +4,7 @@ import WithEmberSupport from 'ember-react-components';
 import { get } from '@ember/object';
 import {
   inject as injectService,
-  service as oldInjectService
+  service as oldInjectService,
 } from '@ember-decorators/service';
 
 const service = oldInjectService || injectService;

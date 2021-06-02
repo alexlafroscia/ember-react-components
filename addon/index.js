@@ -10,7 +10,7 @@ import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
 import componentIsFunctional from './-private/component-is-functional';
 
-const wrapReactComponent = Klass =>
+const wrapReactComponent = (Klass) =>
   class extends EmberComponent {
     /* Add type annotation for private `attrs` property on component */
     getPropsForReact() {
@@ -32,8 +32,8 @@ const wrapReactComponent = Klass =>
         children = [
           React.createElement(YieldWrapper, {
             key: get(this, 'elementId'),
-            nodes: [...childNodes]
-          })
+            nodes: [...childNodes],
+          }),
         ];
       }
 
@@ -74,7 +74,7 @@ export default function WithEmberSupport(descriptor) {
     ? Object.assign({}, descriptor, {
         finisher(Klass) {
           return wrapReactComponent(Klass);
-        }
+        },
       })
     : wrapReactComponent(descriptor);
 }

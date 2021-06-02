@@ -21,7 +21,7 @@ export default class YieldWrapper extends ReactComponent {
     // This element is temporary. When this is mounted,
     // it will be replaced by the children nodes, handled by Ember.
     return createElement('span', {
-      ref: el => (this.el = el)
+      ref: (el) => (this.el = el),
     });
   }
 }

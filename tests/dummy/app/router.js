@@ -24,12 +24,12 @@ export default class Router extends EmberRouter {
   }
 }
 
-Router.map(function() {
-  docsRoute(this, function() {
+Router.map(function () {
+  docsRoute(this, function () {
     this.route('installation');
     this.route('options');
 
-    this.route('features', function() {
+    this.route('features', function () {
       this.route('generator');
       this.route('services');
       this.route('children');

@@ -4,10 +4,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import td from 'testdouble';
 
-module('Integration | Utility | with-ember-support', function(hooks) {
+module('Integration | Utility | with-ember-support', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it can render a React component', async function(assert) {
+  test('it can render a React component', async function (assert) {
     await render(hbs`
       {{basic-component}}
     `);
@@ -17,7 +17,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       .hasText('Hello from React', 'Renders content from a React component');
   });
 
-  test('it can pass properties to a React component', async function(assert) {
+  test('it can pass properties to a React component', async function (assert) {
     this.set('foo', 'bar');
 
     await render(hbs`
@@ -41,7 +41,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       .hasText('Updated is true', 'Maintains the updated state');
   });
 
-  test('an action passed into the component can be called', async function(assert) {
+  test('an action passed into the component can be called', async function (assert) {
     const action = td.function();
     this.set('action', action);
 
@@ -58,7 +58,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
     );
   });
 
-  test('state is persisted through updated props', async function(assert) {
+  test('state is persisted through updated props', async function (assert) {
     this.set('prop', 'foo');
 
     await render(hbs`
@@ -82,8 +82,8 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       .hasText('bar', 'The prop has actually updated');
   });
 
-  module('usage with `ember-decorators`', function() {
-    test('it works with services', async function(assert) {
+  module('usage with `ember-decorators`', function () {
+    test('it works with services', async function (assert) {
       this.owner.lookup('service:session').set('userName', 'Alex');
 
       await render(hbs`{{using-service}}`);
@@ -92,8 +92,8 @@ module('Integration | Utility | with-ember-support', function(hooks) {
     });
   });
 
-  module('supporting yields and children', function() {
-    test('it can yield the block to the React children', async function(assert) {
+  module('supporting yields and children', function () {
+    test('it can yield the block to the React children', async function (assert) {
       await render(hbs`
         {{#yield-to-children}}
           <h1>Child content</h1>
@@ -104,7 +104,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       assert.dom('h1').exists();
     });
 
-    test('the yield can have multiple children', async function(assert) {
+    test('the yield can have multiple children', async function (assert) {
       await render(hbs`
         {{#yield-to-children}}
           <p data-test="foo">Foo</p>
@@ -118,9 +118,9 @@ module('Integration | Utility | with-ember-support', function(hooks) {
     });
   });
 
-  module('supporting functional components', function() {
-    module('with traditional functions', function() {
-      test('it can render them inline', async function(assert) {
+  module('supporting functional components', function () {
+    module('with traditional functions', function () {
+      test('it can render them inline', async function (assert) {
         await render(hbs`
           {{traditional-functional-component name='Alex'}}
         `);
@@ -128,7 +128,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
         assert.dom('[data-test-name]').hasText('Alex');
       });
 
-      test('it can render children', async function(assert) {
+      test('it can render children', async function (assert) {
         await render(hbs`
           {{#traditional-functional-component}}
             <div data-test="foo">Foo</div>
@@ -139,8 +139,8 @@ module('Integration | Utility | with-ember-support', function(hooks) {
       });
     });
 
-    module('with arrow functions', function() {
-      test('it can render them inline', async function(assert) {
+    module('with arrow functions', function () {
+      test('it can render them inline', async function (assert) {
         await render(hbs`
           {{arrow-function-component name='Alex'}}
         `);
@@ -148,7 +148,7 @@ module('Integration | Utility | with-ember-support', function(hooks) {
         assert.dom('[data-test-name]').hasText('Alex');
       });
 
-      test('it can render children', async function(assert) {
+      test('it can render children', async function (assert) {
         await render(hbs`
           {{#arrow-function-component}}
             <div data-test="foo">Foo</div>

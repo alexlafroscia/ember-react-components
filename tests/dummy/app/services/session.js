@@ -2,6 +2,6 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-  userName: 'Alex'
+  userName: 'Alex',
 });
 // END-SNIPPET

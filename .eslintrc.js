@@ -8,25 +8,25 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-      legacyDecorators: true
-    }
+      legacyDecorators: true,
+    },
   },
   plugins: ['babel', 'ember', 'react', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'prettier',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   env: {
-    browser: true
+    browser: true,
   },
   rules: {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
 
     'ember/no-attrs-in-components': 'off',
-    'ember/no-jquery': 'error'
+    'ember/no-jquery': 'error',
   },
   overrides: [
     // TypeScript files
@@ -35,8 +35,8 @@ module.exports = {
       files: ['addon/**/*.ts', 'tests/**/*.ts'],
       rules: {
         'no-undef': 'off',
-        'no-unused-vars': 'off'
-      }
+        'no-unused-vars': 'off',
+      },
     },
     // node files
     {
@@ -50,15 +50,15 @@ module.exports = {
         'ember-cli-build.js',
         'config/**/*.js',
         'lib/**/*.js',
-        'tests/dummy/config/**/*.js'
+        'tests/dummy/config/**/*.js',
       ],
       excludedFiles: ['app/**', 'addon/**', 'tests/dummy/app/**'],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
       plugins: ['node'],
       rules: Object.assign(
@@ -67,7 +67,7 @@ module.exports = {
         {
           // add your custom rules and overrides for node files here
         }
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
