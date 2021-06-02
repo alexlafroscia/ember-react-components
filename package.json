@@ -44,6 +44,7 @@
     "@commitlint/config-conventional": "^7.0.1",
     "@ember/edition-utils": "^1.1.1",
     "@ember/optional-features": "^2.0.0",
+    "@ember/test-helpers": "^2.2.6",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
     "babel-eslint": "^10.0.3",
@@ -66,7 +67,7 @@
     "ember-load-initializers": "^2.1.1",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "^1.2.0",
-    "ember-qunit": "^4.6.0",
+    "ember-qunit": "^5.1.4",
     "ember-resolver": "^7.0.0",
     "ember-sinon-qunit": "^6.0.0",
     "ember-source": "~3.16.0",
@@ -83,7 +84,8 @@
     "lint-staged": "^7.2.0",
     "loader.js": "^4.7.0",
     "prettier": "2.3.0",
-    "qunit-dom": "^1.0.0",
+    "qunit": "^2.15.0",
+    "qunit-dom": "^1.6.0",
     "standard-version": "^8.0.1"
   },
   "engines": {
