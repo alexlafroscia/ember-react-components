@@ -10,17 +10,18 @@ export default class Router extends AddonDocsRouter {
   location = config.locationType;
   rootURL = config.rootURL;
 
-  constructor() {
-    super(...arguments);
+  // FIXME: causes recursive routing issue
+  // constructor() {
+  //   super(...arguments);
 
-    let router = this.router;
-    router.on('routeDidChange', () => {
-      const page = router.currentURL;
-      const title = router.currentRouteName || 'unknown';
+  //   let router = this.router;
+  //   router.on('routeDidChange', () => {
+  //     const page = router.currentURL;
+  //     const title = router.currentRouteName || 'unknown';
 
-      this.metrics.trackPage({ page, title });
-    });
-  }
+  //     this.metrics.trackPage({ page, title });
+  //   });
+  // }
 }
 
 Router.map(function () {
