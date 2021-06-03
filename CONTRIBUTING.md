@@ -16,6 +16,7 @@
 
 * `ember test` – Runs the test suite on the current Ember version
 * `ember test --server` – Runs the test suite in "watch mode"
+* `yarn test` – Runs both the Ember test suite (on the current Ember version) and linting
 * `ember try:each` – Runs the test suite against multiple Ember versions
 
 ## Running the dummy application
