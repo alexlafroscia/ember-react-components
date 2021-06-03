@@ -1,5 +1,4 @@
-import EmberComponent from '@ember/component';
-import { get } from '@ember/object';
+import GlimmerComponent from '@glimmer/component';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 
@@ -11,12 +10,10 @@ import grantOwnerAccess from './-private/grant-owner-access';
 import isFunctionalComponent from './-private/is-functional-component';
 
 const wrapReactComponent = (Klass) =>
-  class extends EmberComponent {
+  class extends GlimmerComponent {
     /* Add type annotation for private `attrs` property on component */
     getPropsForReact() {
-      return Object.keys(this.attrs).reduce((acc, key) => {
-        const value = get(this, key);
-
+      return Object.entries(this.attrs).reduce((acc, [key, value]) => {
         acc[key] = value;
 
         return acc;
@@ -31,7 +28,7 @@ const wrapReactComponent = (Klass) =>
         const childNodes = this.element.childNodes;
         children = [
           React.createElement(YieldWrapper, {
-            key: get(this, 'elementId'),
+            key: this.elementId,
             nodes: [...childNodes],
           }),
         ];
