@@ -42,16 +42,16 @@ module('Integration | Utility | with-ember-support', function (hooks) {
   });
 
   test('an action passed into the component can be called', async function (assert) {
-    const action = sinon.stub();
-    this.set('action', action);
+    const handleActionStub = sinon.stub();
+    this.set('handleAction', handleActionStub);
 
     await render(hbs`
-      <InvokeAction @action={{action}} />
+      <InvokeAction @handleAction={{handleAction}} />
     `);
 
     await click('button');
 
-    assert.ok(action.calledOnce, 'Invoked the passed in action');
+    assert.ok(handleActionStub.calledOnce, 'Invoked the passed in action');
   });
 
   test('state is persisted through updated props', async function (assert) {

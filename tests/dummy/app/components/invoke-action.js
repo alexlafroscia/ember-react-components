@@ -4,8 +4,8 @@ import WithEmberSupport from 'ember-react-components';
 @WithEmberSupport
 export default class InvokeAction extends React.Component {
   render() {
-    const { action } = this.props;
+    const { handleAction } = this.props;
 
-    return <button onClick={action()}>click me</button>;
+    return <button onClick={handleAction()}>click me</button>;
   }
 }
