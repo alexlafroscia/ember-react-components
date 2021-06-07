@@ -78,6 +78,22 @@ module('Integration | Utility | with-ember-support', function (hooks) {
       .hasText('bar', 'The prop has actually updated');
   });
 
+  test('React hooks can be used', async function (assert) {
+    await render(hbs`
+      <WithHooks />
+    `);
+
+    assert
+      .dom('[data-test="state"]')
+      .hasText('You clicked 0 times', 'Initial state set');
+
+    await click('button');
+
+    assert
+      .dom('[data-test="state"]')
+      .hasText('You clicked 1 times', 'State updated via in-component hook');
+  });
+
   module('usage with `ember-decorators`', function () {
     test('it works with services', async function (assert) {
       this.owner.lookup('service:session').set('userName', 'Alex');
