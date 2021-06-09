@@ -13,7 +13,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     `);
 
     assert
-      .dom('h1')
+      .dom('div > h1')
       .hasText('Hello from React', 'Renders content from a React component');
   });
 
@@ -169,6 +169,34 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
         assert.dom('[data-test="foo"]').hasText('Foo');
       });
+    });
+  });
+
+  module('with Ember mixin props passed to HOC', function () {
+    test('it can render React function component inside a span', async function (assert) {
+      await render(hbs`
+        <SpanFunctionComponent />
+      `);
+
+      assert
+        .dom('span > button')
+        .hasText(
+          'Click me',
+          'Renders a button inside a span from a React component'
+        );
+    });
+
+    test('it can render a React class component inside a span via decorator', async function (assert) {
+      await render(hbs`
+        <SpanClassComponent />
+      `);
+
+      assert
+        .dom('span > button')
+        .hasText(
+          'Click me',
+          'Renders a button inside a span from a React component'
+        );
     });
   });
 });
