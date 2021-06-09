@@ -1,27 +1,10 @@
 import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
-import { inject as service } from '@ember/service';
 
 import config from './config/environment';
 
-export default class Router extends AddonDocsRouter {
-  @service metrics;
-  @service router;
-
+class Router extends AddonDocsRouter {
   location = config.locationType;
   rootURL = config.rootURL;
-
-  // FIXME: causes recursive routing issue
-  // constructor() {
-  //   super(...arguments);
-
-  //   let router = this.router;
-  //   router.on('routeDidChange', () => {
-  //     const page = router.currentURL;
-  //     const title = router.currentRouteName || 'unknown';
-
-  //     this.metrics.trackPage({ page, title });
-  //   });
-  // }
 }
 
 Router.map(function () {
@@ -37,3 +20,5 @@ Router.map(function () {
     });
   });
 });
+
+export default Router;
