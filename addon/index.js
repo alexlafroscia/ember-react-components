@@ -1,28 +1,40 @@
-import GlimmerComponent from '@glimmer/component';
+/* eslint-disable ember/no-classic-components */
+import EmberComponent from '@ember/component';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import isObject from 'is-object';
 
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
 import isFunctionalComponent from './-private/is-functional-component';
 
 const wrapReactComponent = (Klass) =>
-  class extends GlimmerComponent {
-    /* Add type annotation for private `attrs` property on component */
-    getPropsForReact() {
-      return Object.entries(this.attrs).reduce((acc, [key, value]) => {
-        acc[key] = value;
-
-        return acc;
-      }, {});
+  class extends EmberComponent {
+    /**
+     * Add type annotation for private `attrs` property on component
+     *
+     * Accounts for possibility of passing HBS props as MutableCell objects.
+     *
+     * @private
+     */
+    getReactProps() {
+      return Object.entries(this.attrs).reduce(
+        (acc, [propName, propValue]) => ({
+          ...acc,
+          [propName]:
+            isObject(propValue) && propValue.constructor.name === 'MutableCell'
+              ? propValue.value
+              : propValue,
+        }),
+        {}
+      );
     }
 
     mountElement() {
-      const props = this.getPropsForReact();
-      let { children } = props;
+      let { children, ...props } = this.getReactProps();
 
       if (!children) {
         const childNodes = this.element.childNodes;
