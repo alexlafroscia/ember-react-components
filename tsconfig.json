@@ -1,48 +1,34 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "allowJs": true,
+    "target": "es2018",
     "moduleResolution": "node",
+    "module": "es6",
+
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "alwaysStrict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "experimentalDecorators": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "noEmit": true,
+    "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noEmitOnError": false,
-    "noEmit": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+
     "baseUrl": ".",
-    "module": "es6",
-    "experimentalDecorators": true,
     "paths": {
-      "dummy/tests/*": [
-        "tests/*"
-      ],
-      "dummy/*": [
-        "tests/dummy/app/*",
-        "app/*"
-      ],
-      "ember-react-components": [
-        "addon"
-      ],
-      "ember-react-components/*": [
-        "addon/*"
-      ],
-      "*": [
-        "types/*"
-      ]
+      "dummy/tests/*": ["tests/*"],
+      "dummy/*": ["tests/dummy/app/*", "app/*"],
+      "ember-react-components": ["addon"],
+      "ember-react-components/*": ["addon/*"],
+      "*": ["types/*"]
     }
   },
-  "include": [
-    "app",
-    "addon",
-    "tests",
-    "types"
-  ]
+  "include": ["app", "addon", "tests", "types"]
 }
