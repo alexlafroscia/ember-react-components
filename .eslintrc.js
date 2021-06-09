@@ -11,11 +11,10 @@ module.exports = {
       legacyDecorators: true,
     },
   },
-  plugins: ['babel', 'ember', 'react', 'prettier'],
+  plugins: ['ember', 'react'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
-    'prettier',
     'plugin:prettier/recommended',
   ],
   env: {
@@ -29,15 +28,6 @@ module.exports = {
     'ember/no-jquery': 'error',
   },
   overrides: [
-    // TypeScript files
-    {
-      parser: 'typescript-eslint-parser',
-      files: ['addon/**/*.ts', 'tests/**/*.ts'],
-      rules: {
-        'no-undef': 'off',
-        'no-unused-vars': 'off',
-      },
-    },
     // node files
     {
       files: [
@@ -45,14 +35,20 @@ module.exports = {
         '.eslintrc.js',
         '.template-lintrc.js',
         'commitlint.config.js',
+        'ember-cli-build.js',
         'index.js',
         'testem.js',
-        'ember-cli-build.js',
+        'blueprints/*/index.js',
         'config/**/*.js',
         'lib/**/*.js',
         'tests/dummy/config/**/*.js',
       ],
-      excludedFiles: ['app/**', 'addon/**', 'tests/dummy/app/**'],
+      excludedFiles: [
+        'addon/**',
+        'addon-test-support/**',
+        'app/**',
+        'tests/dummy/app/**',
+      ],
       parserOptions: {
         sourceType: 'script',
       },
