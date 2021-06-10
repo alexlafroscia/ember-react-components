@@ -65,5 +65,11 @@ module.exports = {
         }
       ),
     },
+    {
+      files: ['.ember-cli.js'],
+      rules: {
+        'node/no-unpublished-require': 'off',
+      },
+    },
   ],
 };
