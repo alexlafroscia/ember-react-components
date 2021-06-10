@@ -14,6 +14,7 @@
 /.eslintrc.js
 /.git/
 /.gitignore
+/.husky/
 /.template-lintrc.js
 /.travis.yml
 /.watchmanconfig
@@ -26,7 +27,12 @@
 /testem.js
 /tests/
 /yarn.lock
+.lintstagedrc
+.nvmrc
+.prettierrc
 .gitkeep
+commitlint.config.js
+tsconfig.json
 
 # ember-try
 /.node_modules.ember-try/
