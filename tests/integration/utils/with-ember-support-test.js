@@ -187,7 +187,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
       assert
         .dom('span > button')
         .hasText(
-          'Click me',
+          'Button wrapped in a span',
           'Renders a button inside a span from a React component'
         );
     });
@@ -200,7 +200,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
       assert
         .dom('span > button')
         .hasText(
-          'Click me',
+          'Button wrapped in a span',
           'Renders a button inside a span from a React component'
         );
     });
