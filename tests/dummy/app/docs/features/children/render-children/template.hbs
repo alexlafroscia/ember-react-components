@@ -1,11 +1,11 @@
-{{#docs-demo as |demo|}}
-  {{#demo.example name='demo-yield-children.hbs'}}
-    {{#yield-to-children}}
+<DocsDemo as |demo|>
+  <demo.example @name="demo-yield-children.hbs">
+    <YieldToChildren>
       <p>This is yielded into the React children</p>
-    {{/yield-to-children}}
-  {{/demo.example}}
+    </YieldToChildren>
+  </demo.example>
 
   {{demo.snippet 'yield-to-children.js' label='yield-to-children.js'}}
   {{demo.snippet 'demo-yield-children.hbs'}}
-{{/docs-demo}}
+</DocsDemo>
 

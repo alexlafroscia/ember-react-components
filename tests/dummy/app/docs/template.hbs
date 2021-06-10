@@ -1,7 +1,7 @@
-{{docs-header logo='ember-cli' addonLogo='ember-cli'}}
+<DocsHeader @logo="ember-cli" @addonLogo="ember-cli" />
 
-{{#docs-viewer as |viewer|}}
-  {{#viewer.nav as |nav|}}
+<DocsViewer as |viewer|>
+  <viewer.nav as |nav|>
     {{nav.item 'Overview' 'docs.index'}}
     {{nav.item 'Installation' 'docs.installation'}}
     {{nav.item 'Options' 'docs.options'}}
@@ -14,13 +14,13 @@
     {{nav.item 'Yield to Children' 'docs.features.children'}}
     {{nav.item 'Functional Components' 'docs.features.functional'}}
     {{nav.item 'Optional Mixin Props' 'docs.features.mixin-props'}}
-  {{/viewer.nav}}
+  </viewer.nav>
 
-  {{#viewer.main}}
+  <viewer.main>
     <div class="docs-container docs__center">
       <div class="docs-section">
         {{outlet}}
       </div>
     </div>
-  {{/viewer.main}}
-{{/docs-viewer}}
+  </viewer.main>
+</DocsViewer>
