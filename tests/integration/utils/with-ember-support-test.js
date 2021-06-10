@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
-import Service from '@ember/service';
 import { click, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
@@ -97,12 +96,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
   module('usage with `ember-decorators`', function () {
     test('it works with services', async function (assert) {
-      this.owner.register(
-        'service:session',
-        class SessionService extends Service {
-          userName = 'Alex';
-        }
-      );
+      this.owner.factoryFor('service:session');
 
       await render(hbs`<UsingService />`);
 
