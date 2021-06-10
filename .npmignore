@@ -10,15 +10,20 @@
 /.editorconfig
 /.ember-cli
 /.env*
+/.eslintcache
 /.eslintignore
 /.eslintrc.js
 /.git/
 /.gitignore
 /.husky/
+/.lintstagedrc
+/.nvmrc
+/.prettierrc
 /.template-lintrc.js
 /.travis.yml
 /.watchmanconfig
 /bower.json
+/commitlint.config.js
 /config/ember-try.js
 /config/addon-docs.js
 /config/deploy.js
@@ -26,13 +31,9 @@
 /ember-cli-build.js
 /testem.js
 /tests/
+/tsconfig.json
 /yarn.lock
-.lintstagedrc
-.nvmrc
-.prettierrc
 .gitkeep
-commitlint.config.js
-tsconfig.json
 
 # ember-try
 /.node_modules.ember-try/
