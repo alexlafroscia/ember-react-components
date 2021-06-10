@@ -17,6 +17,7 @@ Router.map(function () {
       this.route('services');
       this.route('children');
       this.route('functional');
+      this.route('mixin-props');
     });
   });
 });
