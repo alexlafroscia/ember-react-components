@@ -101,13 +101,12 @@ const wrapReactComponent = (Klass, mixinProps) => {
  * @returns Ember-compatible React component
  */
 export default function WithEmberSupport(descriptor, mixinProps) {
-  const isHOC = descriptor
-    .toString()
-    .includes('/*#__PURE__*/_react.default.createElement');
+  // Assumes an object passed is metadata for a decorator
+  const usesDecorator = isObject(descriptor);
 
-  return isHOC
-    ? wrapReactComponent(descriptor, mixinProps)
-    : function (target) {
+  return usesDecorator
+    ? function (target) {
         return wrapReactComponent(target, descriptor);
-      };
+      }
+    : wrapReactComponent(descriptor, mixinProps);
 }
