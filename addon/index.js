@@ -11,6 +11,7 @@ import isObject from 'is-object';
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
 import isFunctionalComponent from './-private/is-functional-component';
+import isMutableCell from './-private/is-mutable-cell';
 
 /**
  * Wrap React compatible with Ember hooks
@@ -36,10 +37,7 @@ const wrapReactComponent = (Klass, mixinProps) => {
       return Object.entries(this.attrs).reduce(
         (acc, [propName, propValue]) => ({
           ...acc,
-          [propName]:
-            isObject(propValue) && propValue.constructor.name === 'MutableCell'
-              ? propValue.value
-              : propValue,
+          [propName]: isMutableCell(propValue) ? propValue.value : propValue,
         }),
         {}
       );
