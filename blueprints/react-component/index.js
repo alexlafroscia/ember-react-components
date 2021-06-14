@@ -1,5 +1,5 @@
 /* eslint-env node */
 
 module.exports = {
-  description: 'Generate a React component'
+  description: 'Generate a React component',
 };

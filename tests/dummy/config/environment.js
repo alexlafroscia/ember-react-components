@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'dummy',
     environment,
@@ -9,34 +9,18 @@ module.exports = function(environment) {
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-50234610-6',
-          // Use `analytics_debug.js` in development
-          debug: environment === 'development',
-          // Use verbose tracing of GA events
-          trace: environment === 'development',
-          // Ensure development env hits aren't sent to GA
-          sendHitTask: environment !== 'development'
-        }
-      }
-    ]
   };
 
   if (environment === 'development') {

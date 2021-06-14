@@ -11,5 +11,5 @@ module.exports = {
 
     configureJsxTransform(parent);
     addJsxExtensionSupport(parent);
-  }
+  },
 };

@@ -1,80 +1,110 @@
+/* eslint-disable ember/no-classic-components */
 import EmberComponent from '@ember/component';
-import { get } from '@ember/object';
+import EmberMixin from '@ember/object/mixin';
 import { schedule } from '@ember/runloop';
 import { getOwner } from '@ember/application';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import isObject from 'is-object';
 
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
-import componentIsFunctional from './-private/component-is-functional';
+import isFunctionalComponent from './-private/is-functional-component';
+import isMutableCell from './-private/is-mutable-cell';
 
-const wrapReactComponent = Klass =>
-  class extends EmberComponent {
-    /* Add type annotation for private `attrs` property on component */
-    getPropsForReact() {
-      return Object.keys(this.attrs).reduce((acc, key) => {
-        const value = get(this, key);
+/**
+ * Wrap React compatible with Ember hooks
+ *
+ * @param {Class} Klass React-renderable component to render in Ember
+ * @param {Object} mixinProps Ember mixin properties for Ember classic component wrapper node
+ * @returns Ember-compatible React component
+ */
+const wrapReactComponent = (Klass, mixinProps) => {
+  // eslint-disable-next-line ember/no-new-mixins
+  const ComponentMixin = EmberMixin.create({ ...mixinProps });
 
-        acc[key] = value;
+  // eslint-disable-next-line ember/no-classic-classes, ember/require-tagless-components
+  return EmberComponent.extend(ComponentMixin, {
+    /**
+     * Add type annotation for private `attrs` property on component
+     *
+     * Accounts for possibility of passing HBS props as MutableCell objects.
+     *
+     * @private
+     */
+    getReactProps() {
+      return Object.entries(this.attrs).reduce(
+        (acc, [propName, propValue]) => ({
+          ...acc,
+          [propName]: isMutableCell(propValue) ? propValue.value : propValue,
+        }),
+        {}
+      );
+    },
 
-        return acc;
-      }, {});
-    }
-
+    /**
+     * Mount React element to DOM
+     *
+     * @private
+     */
     mountElement() {
-      const props = this.getPropsForReact();
-      let { children } = props;
+      let { children, ...props } = this.getReactProps();
 
       if (!children) {
         const childNodes = this.element.childNodes;
         children = [
           React.createElement(YieldWrapper, {
-            key: get(this, 'elementId'),
-            nodes: [...childNodes]
-          })
+            key: this.elementId,
+            nodes: [...childNodes],
+          }),
         ];
       }
 
-      let KlassToRender;
-
-      if (componentIsFunctional(Klass)) {
-        KlassToRender = Klass;
-      } else {
-        const owner = getOwner(this);
-        KlassToRender = grantOwnerAccess(Klass, owner);
-      }
+      const KlassToRender = isFunctionalComponent(Klass)
+        ? Klass
+        : grantOwnerAccess(Klass, getOwner(this));
 
       ReactDOM.render(
         React.createElement(KlassToRender, props, children),
         this.element
       );
-    }
+    },
 
     didUpdateAttrs() {
       schedule('render', () => this.mountElement());
-    }
+    },
 
     didInsertElement() {
-      super.didInsertElement();
+      this._super(...arguments);
 
       this.mountElement();
-    }
+    },
 
     willDestroyElement() {
       ReactDOM.unmountComponentAtNode(this.element);
 
-      super.willDestroyElement();
-    }
-  };
+      this._super(...arguments);
+    },
+  });
+};
 
-export default function WithEmberSupport(descriptor) {
-  return descriptor.toString() === '[object Descriptor]'
-    ? Object.assign({}, descriptor, {
-        finisher(Klass) {
-          return wrapReactComponent(Klass);
-        }
-      })
-    : wrapReactComponent(descriptor);
+/**
+ * Higher-order function for providing Ember hooks to a React component
+ *
+ * Can also be used as an ECMAScript decorator
+ *
+ * @param {Object} descriptor React renderable component
+ * @param {Object} [mixinProps] Ember mixin properties for Ember classic component wrapper node
+ * @returns Ember-compatible React component
+ */
+export default function WithEmberSupport(descriptor, mixinProps) {
+  // Assumes an object passed is metadata for a decorator
+  const usesDecorator = isObject(descriptor);
+
+  return usesDecorator
+    ? function (target) {
+        return wrapReactComponent(target, descriptor);
+      }
+    : wrapReactComponent(descriptor, mixinProps);
 }

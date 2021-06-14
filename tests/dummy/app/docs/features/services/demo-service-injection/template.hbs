@@ -1,8 +1,8 @@
-{{#docs-demo as |demo|}}
-  {{#demo.example name='demo-using-service.hbs'}}
-    {{using-service}}
-  {{/demo.example}}
+<DocsDemo as |demo|>
+  <demo.example @name="demo-using-service.hbs">
+    <UsingService />
+  </demo.example>
 
   {{demo.snippet 'using-service.js' label='component.js'}}
   {{demo.snippet 'session-service.js' label='services/session.js'}}
-{{/docs-demo}}
+</DocsDemo>

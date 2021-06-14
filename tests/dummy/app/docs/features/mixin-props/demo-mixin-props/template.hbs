@@ -1,0 +1,21 @@
+<p>This works with both functional components:</p>
+
+<DocsDemo as |demo|>
+  <demo.example @name="demo-fc-with-mixin-props.hbs">
+    <SpanFunctionComponent />
+  </demo.example>
+
+  {{demo.snippet 'span-function-component.js' label='component.js'}}
+  {{demo.snippet 'demo-fc-with-mixin-props.hbs'}}
+</DocsDemo>
+
+<p>And with class components:</p>
+
+<DocsDemo as |demo|>
+  <demo.example @name="demo-class-component-with-mixin-props.hbs">
+    <SpanClassComponent />
+  </demo.example>
+
+  {{demo.snippet 'span-class-component.js' label='component.js'}}
+  {{demo.snippet 'demo-class-component-with-mixin-props.hbs'}}
+</DocsDemo>

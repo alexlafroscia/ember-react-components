@@ -1,8 +1,8 @@
-{{#docs-demo as |demo|}}
-  {{#demo.example name='demo-basic-component.hbs'}}
-    {{basic-component}}
-  {{/demo.example}}
+<DocsDemo as |demo|>
+  <demo.example @name="demo-basic-component.hbs">
+    <BasicComponent />
+  </demo.example>
 
   {{demo.snippet 'basic-component.js' label='components/basic-component.js'}}
   {{demo.snippet 'demo-basic-component.hbs'}}
-{{/docs-demo}}
+</DocsDemo>

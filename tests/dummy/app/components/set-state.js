@@ -9,7 +9,7 @@ export default class WithSetState extends React.Component {
     const { someValue } = this.props;
 
     this.state = {
-      initialValue: someValue
+      initialValue: someValue,
     };
   }
 

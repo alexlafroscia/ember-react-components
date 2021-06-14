@@ -4,7 +4,7 @@ import WithEmberSupport from 'ember-react-components';
 @WithEmberSupport
 export default class WithProperties extends React.Component {
   state = {
-    updated: false
+    updated: false,
   };
 
   render() {
