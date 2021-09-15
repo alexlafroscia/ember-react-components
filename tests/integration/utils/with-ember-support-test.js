@@ -149,6 +149,15 @@ module('Integration | Utility | with-ember-support', function (hooks) {
 
         assert.dom('[data-test="foo"]').hasText('Foo');
       });
+
+      test('it can handle Ember `hash` template helper props', async function (assert) {
+        await render(hbs`
+          <TraditionalFunctionalComponent @foo={{hash bar='baz'}} @name='yo' />
+        `);
+
+        assert.dom('[foo]').exists();
+        assert.dom('[data-test-name]').hasText('yo');
+      });
     });
 
     module('with arrow functions', function () {

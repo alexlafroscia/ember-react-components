@@ -6,7 +6,7 @@ import { getOwner } from '@ember/application';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import isObject from 'is-object';
+import isPlainObject from 'is-plain-obj';
 
 import YieldWrapper from './-private/yield-wrapper';
 import grantOwnerAccess from './-private/grant-owner-access';
@@ -35,10 +35,14 @@ const wrapReactComponent = (Klass, mixinProps) => {
      */
     getReactProps() {
       return Object.entries(this.attrs).reduce(
-        (acc, [propName, propValue]) => ({
-          ...acc,
-          [propName]: isMutableCell(propValue) ? propValue.value : propValue,
-        }),
+        (props, [propName, propValue]) => {
+          const value = isMutableCell(propValue) ? propValue.value : propValue;
+          return {
+            ...props,
+            // ???: Derived POJOs recast as literals to handle Ember `hash` template helper props and avoid TypeError
+            [propName]: isPlainObject(value) ? { ...value } : value,
+          };
+        },
         {}
       );
     },
@@ -100,7 +104,7 @@ const wrapReactComponent = (Klass, mixinProps) => {
  */
 export default function WithEmberSupport(descriptor, mixinProps) {
   // Assumes an object passed is metadata for a decorator
-  const usesDecorator = isObject(descriptor);
+  const usesDecorator = isPlainObject(descriptor);
 
   return usesDecorator
     ? function (target) {

@@ -14,11 +14,12 @@ import isObject from 'is-object';
  * @private
  */
 export default function isMutableCell(propValue) {
-  return (
+  return Boolean(
     isObject(propValue) &&
-    (propValue.constructor.name === 'MutableCell' ||
-      Object.keys(propValue).some((propKey) =>
-        propKey.startsWith('__MUTABLE_CELL__')
-      ))
+      propValue.constructor &&
+      (propValue.constructor.name === 'MutableCell' ||
+        Object.keys(propValue).some((propKey) =>
+          propKey.startsWith('__MUTABLE_CELL__')
+        ))
   );
 }
