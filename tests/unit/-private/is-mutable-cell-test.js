@@ -1,4 +1,5 @@
 import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
 import isMutableCell from 'ember-react-components/-private/is-mutable-cell';
 
@@ -36,7 +37,9 @@ class MutableCell {
 // Tests
 //
 
-module('Unit | Private Utility | isMutableCell', function () {
+module('Unit | Private Utility | isMutableCell', function (hooks) {
+  setupTest(hooks);
+
   test('it can detect a Symbol-based MutableCell object', function (assert) {
     const mockSymbolMutableCell = new MutableCell('foo', 'bar');
 
