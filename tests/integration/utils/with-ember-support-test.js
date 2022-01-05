@@ -21,7 +21,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('foo', 'bar');
 
     await render(hbs`
-      <WithProperties @foo={{foo}} />
+      <WithProperties @foo={{this.foo}} />
     `);
 
     assert.dom('button').hasText('Updated is false', 'Has the initial state');
@@ -46,7 +46,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('handleAction', handleActionStub);
 
     await render(hbs`
-      <InvokeAction @handleAction={{handleAction}} />
+      <InvokeAction @handleAction={{this.handleAction}} />
     `);
 
     await click('button');
@@ -58,7 +58,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     this.set('prop', 'foo');
 
     await render(hbs`
-      <SetState @someValue={{prop}} />
+      <SetState @someValue={{this.prop}} />
     `);
 
     assert
