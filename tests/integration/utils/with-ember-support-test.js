@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
-import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
+import { click, fillIn, find, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Utility | with-ember-support', function (hooks) {
@@ -18,27 +18,42 @@ module('Integration | Utility | with-ember-support', function (hooks) {
   });
 
   test('it can pass properties to a React component', async function (assert) {
-    this.set('foo', 'bar');
+    const [firstFoo, secondFoo, thirdFoo] = ['bar', 'baz', 'yo'];
+
+    this.set('foo', firstFoo);
 
     await render(hbs`
       <WithProperties @foo={{this.foo}} />
     `);
 
-    assert.dom('button').hasText('Updated is false', 'Has the initial state');
-    assert.dom('p').hasText('foo equals bar', 'Renders passed in properties');
+    const button = find('button');
+    const input = find('input');
+    const p = find('p');
 
-    await click('button');
+    assert.dom(button).hasText('Updated is false', 'Has the initial state');
+    assert
+      .dom(p)
+      .hasText(`foo equals ${firstFoo}`, 'Renders passed in properties');
 
-    assert.dom('button').hasText('Updated is true', 'Has the updated state');
+    await click(button);
 
-    this.set('foo', 'some new value');
+    assert.dom(button).hasText('Updated is true', 'Has the updated state');
+
+    this.set('foo', secondFoo);
 
     assert
-      .dom('p')
-      .hasText('foo equals some new value', 'Updates when properties change');
+      .dom(p)
+      .hasText(`foo equals ${secondFoo}`, 'Updates when properties change');
     assert
-      .dom('button')
+      .dom(button)
       .hasText('Updated is true', 'Maintains the updated state');
+
+    await fillIn(input, thirdFoo);
+
+    assert.dom(input).hasValue(thirdFoo);
+    assert
+      .dom(p)
+      .hasText(`foo equals ${thirdFoo}`, 'Updates when properties change');
   });
 
   test('an action passed into the component can be called', async function (assert) {
