@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { hbs } from 'ember-cli-htmlbars';
-import { click, fillIn, find, render } from '@ember/test-helpers';
+import { click, fillIn, find, render, typeIn } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Utility | with-ember-support', function (hooks) {
@@ -18,7 +18,7 @@ module('Integration | Utility | with-ember-support', function (hooks) {
   });
 
   test('it can pass properties to a React component', async function (assert) {
-    const [firstFoo, secondFoo, thirdFoo] = ['bar', 'baz', 'yo'];
+    const [firstFoo, secondFoo] = ['bar', 'baz'];
 
     this.set('foo', firstFoo);
 
@@ -27,7 +27,6 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     `);
 
     const button = find('button');
-    const input = find('input');
     const p = find('p');
 
     assert.dom(button).hasText('Updated is false', 'Has the initial state');
@@ -47,8 +46,28 @@ module('Integration | Utility | with-ember-support', function (hooks) {
     assert
       .dom(button)
       .hasText('Updated is true', 'Maintains the updated state');
+  });
 
-    await fillIn(input, thirdFoo);
+  test('it can change input element values in a React component', async function (assert) {
+    const [firstFoo, secondFoo, thirdFoo] = ['bar', '', 'baz'];
+
+    this.set('foo', firstFoo);
+
+    await render(hbs`
+      <WithProperties @foo={{this.foo}} />
+    `);
+
+    const input = find('input');
+    const p = find('p');
+
+    await fillIn(input, secondFoo);
+
+    assert.dom(input).hasValue(secondFoo);
+    assert
+      .dom(p)
+      .hasText(`foo equals ${secondFoo}`, 'Updates when properties change');
+
+    await typeIn(input, thirdFoo);
 
     assert.dom(input).hasValue(thirdFoo);
     assert
